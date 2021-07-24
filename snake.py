@@ -7,6 +7,7 @@ LEFT = 180
 
 class Snake:
     def __init__(self, step=10):
+
         self.move_step = step
         self.segments = []
         self.create_snake()
@@ -25,6 +26,13 @@ class Snake:
 
     def extends(self):
         self.add_segments(self.segments[-1].position())
+
+    def reset(self):
+        for seg in self.segments:
+            seg.goto(400, 400)
+        self.segments.clear()
+        self.create_snake()
+        self.head = self.segments[0]
 
     def move(self):
         for seg_number in range(len(self.segments) - 1, 0, -1):
